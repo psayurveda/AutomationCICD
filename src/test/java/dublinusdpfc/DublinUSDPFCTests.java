@@ -10,27 +10,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
-import dublinusdpfc.pageobjects.LandingPage;
+//import dublinusdpfc.pageobjects.LandingPage;
 
 //import com.FramesAILabs.DublinUSDPFCSeleniumFrameWork.ExcelFileOperations;
 
 
 public class DublinUSDPFCTests {
 
-	public static void main(String[] args) {
+	@Test
+	public static void invokePage() {
 		// TODO Auto-generated method stub
 
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
-		//driver.get("https://dublinusd.org/");
-		//ExcelFileOperations.createFile();
-		LandingPage landingpage = new LandingPage(driver);
-		landingpage.goTo();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		
+		driver.manage().window().maximize();
+		driver.get("https://dublinusd.org/");
+		ExcelFileOperations.createFile();
+		//LandingPage landingpage = new LandingPage(driver);
+		//landingpage.goTo();
+		getAmadorEleParentFaculty(driver, wait);
 		
 	}
+	@Test(dependsOnMethods= {"invokePage"})
 	public static void getAmadorEleParentFaculty(WebDriver driver, WebDriverWait wait) {
 		WebElement schools = driver.findElement(By.xpath("//div[@class='schools-list']"));
 		schools.click();

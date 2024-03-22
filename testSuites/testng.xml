@@ -2,22 +2,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel = "tests" name="Suite">
 
-<listeners>
-<listener class-name="dublinusdpfc.TestComponents.Listeners"/>
-</listeners>
-
-
-  <test thread-count="5" name="Submit Order Test">
+  <test thread-count="2" name="Dublin USD PFC">
     <classes>
-      <class name="dublinusdpfc.tests.SubmitOrderTest"/>
+      <class name="dublinusdpfc.tests.DublinUSDPFCTests"/>
     </classes>
   </test> <!-- Test -->
-  
+  <!--
   <test thread-count="5" name="Error Validations Test">
     <classes>
       <class name="dublinusdpfc.tests.ErrorValidationsTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test> --><!-- Test -->
+ 
 </suite> <!-- Suite -->
 
 
